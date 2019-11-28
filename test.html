@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <input type="button" id="b" value="run">
+    <textarea rows="8" cols="80" id="f"></textarea>
+  </body>
+  <script src="radeon.js"></script>
+  <script>
+  var out = "";
+  R.onclick("b",function(){
+    var chars = [" ",";","\"","\n","(",")"];
+    var str = R.splitwith(R.value("f"),chars);
+    var lstn="";
+    var durum = "";
+    var tok = "";
+    out = "";
+    R.until(str,";",
+    function (q) {
+      tok+=str[q];
+      R.equalsone(str[q],["print","div","p"],function (h,w) {
+        lstn = w;
+      });},function (q) {
+      R.among(tok,"\"","\"",function(q,w,p){if(p){durum = w;}});
+      R.among(tok,"(",")",function(q,w,p){if(p){durum = w;}});
+   out+=R.dictif(lstn,{
+     print:"console.log(\""+durum+"\");",
+     div:"<div>"+durum+"</div>",
+     p:"<p>"+durum+"<p>"
+   });
+   tok="";});});
+  </script>
+</html>
