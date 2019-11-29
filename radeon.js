@@ -149,6 +149,9 @@ return y[c];
 }
 return "";
 }
+this.fakestring = function(x) {
+return "\""+x+"\"";
+}
 }
 function int_to_hex(num){
     var hex = Math.round(num).toString(16);
