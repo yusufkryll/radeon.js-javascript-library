@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <input type="button" id="b" value="run">
+    <textarea rows="8" cols="80" id="f"></textarea>
+  </body>
+  <script src="radeon.js"></script>
+  <script>
+R.onclick("b",function(){
+var str = R.slice(R.value("f"),"html@");
+var html = R.slice(str[2],"@html")[0];
+console.log(html);
+var str = R.slice(R.value("f"),"js@");
+var html = R.slice(str[2],"@js")[0];
+console.log(html);
+});
+  </script>
+</html>

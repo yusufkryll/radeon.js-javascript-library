@@ -92,6 +92,14 @@ this.splitwith = function(x,y) {
   }
   return n;
 }
+this.slice = function(x,y) {
+var z = x.indexOf(y);
+var arr = [];
+arr.push(x.substring(0,z));
+arr.push(x.substring(z,z+y.length));
+arr.push(x.substring(z+y.length,x.length));
+return arr;
+}
 this.onclick = function(x,y) {
 document.getElementById(x).onclick = y;
 }
